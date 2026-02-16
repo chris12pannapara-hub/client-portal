@@ -165,7 +165,6 @@ CREATE INDEX IF NOT EXISTS idx_notifications_created ON notifications (created_a
 -- TABLE: audit_log
 -- =============================================================================
 -- Immutable append-only record of all security-relevant system events.
--- Mandatory in regulated industries (finance, HR, healthcare).
 --
 -- RULE: Rows in this table are NEVER updated or deleted.
 --       This is enforced at the application layer (FastAPI).
