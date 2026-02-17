@@ -1,0 +1,69 @@
+# =============================================================================
+# ADP CLIENT PORTAL — DATABASE DOCKER COMPOSE
+# =============================================================================
+# This file spins up ONLY the PostgreSQL database in isolation.
+# Used during Tier 1 development before the other services exist.
+#
+# Later, the root-level docker-compose.yml will include all services.
+#
+# Usage:
+#   Start:   docker-compose up -d
+#   Stop:    docker-compose down
+#   Destroy: docker-compose down -v   (also removes the data volume)
+#   Logs:    docker-compose logs -f postgres
+#   Shell:   docker-compose exec postgres psql -U portal_user -d client_portal
+# =============================================================================
+
+services:
+
+  postgres:
+    image: postgres:15-alpine          # Alpine = smaller image, same functionality
+    container_name: adp_portal_db
+
+    environment:
+      POSTGRES_DB:       client_portal
+      POSTGRES_USER:     portal_user
+      POSTGRES_PASSWORD: portal_pass_dev   # Change this in production via secrets
+      PGDATA:            /var/lib/postgresql/data/pgdata
+
+    ports:
+      - "5432:5432"   # host:container — connect from your machine on 5432
+
+    volumes:
+      # Named volume: data persists across container restarts
+      - postgres_data:/var/lib/postgresql/data
+
+      # Init scripts: PostgreSQL runs these in filename order on first start
+      # 01_schema.sql runs first, then 02_seed_data.sql
+      - ./init:/docker-entrypoint-initdb.d
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portal_user -d client_portal"]
+      interval:  10s
+      timeout:   5s
+      retries:   5
+      start_period: 15s
+
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # pgAdmin — Optional web-based DB GUI (access at http://localhost:5050)
+  # Login: admin@chris-portal.dev / pgadmin_dev
+  # Then add server: host=postgres, port=5432, user=portal_user, pass=portal_pass_dev
+  # ---------------------------------------------------------------------------
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: adp_portal_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL:    admin@chris-portal.dev
+      PGADMIN_DEFAULT_PASSWORD: pgadmin_dev
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
