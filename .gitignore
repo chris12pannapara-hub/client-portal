@@ -1,0 +1,16 @@
+# Environment files
+backend/.env
+middleware/.env
+
+# Python virtual environment
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# General
+.DS_Store
+*.log
