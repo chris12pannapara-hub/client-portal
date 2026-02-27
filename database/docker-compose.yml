@@ -1,5 +1,5 @@
 # =============================================================================
-# ADP CLIENT PORTAL — DATABASE DOCKER COMPOSE
+# CLIENT PORTAL — DATABASE DOCKER COMPOSE
 # =============================================================================
 # This file spins up ONLY the PostgreSQL database in isolation.
 # Used during Tier 1 development before the other services exist.
@@ -18,7 +18,7 @@ services:
 
   postgres:
     image: postgres:15-alpine          # Alpine = smaller image, same functionality
-    container_name: adp_portal_db
+    container_name: portal_db
 
     environment:
       POSTGRES_DB:       client_portal
@@ -53,7 +53,7 @@ services:
   # ---------------------------------------------------------------------------
   pgadmin:
     image: dpage/pgadmin4:latest
-    container_name: adp_portal_pgadmin
+    container_name: portal_pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL:    admin@chris-portal.dev
       PGADMIN_DEFAULT_PASSWORD: pgadmin_dev
