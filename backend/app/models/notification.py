@@ -38,7 +38,8 @@ class Notification(Base):
     action_url = Column(Text)
     
     # Flexible extra data
-    metadata_: str | dict = Column("metadata", JSON, nullable=True)
+    # NOTE: 'metadata' is a reserved name in SQLAlchemy, so we use a different attribute name
+    notification_metadata = Column("metadata", JSON, nullable=True)
     
     # Timestamps
     created_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow, index=True)
