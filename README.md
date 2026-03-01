@@ -1,20 +1,26 @@
-```markdown
-## FullStack Client Portal 🚀
 
-# [Enterprise Client Portal Architecture] # [Production Ready which you can very well use for your bussiness big or small] 
-**Fork it. Star it.Change it.Show it off .**
+# FullStack Client Portal 🚀
+
+# Enterprise Client Portal Architecture
+
+# Production Ready which you can very well use for your bussiness big or small
+
+**Fork it. Star it. Change it. Show it off .**
+
 https://github.com/chris12pannapara-hub/client-portal.git
 
-**A battle-tested, enterprise-grade Client Portal** that mirrors production authentication flows, microservices architecture, slick React UI, and automated testing suites. Built by a full-stack dev who's loves to creat applications that can help society. JKJK still learning!!!
+**A battle-tested, enterprise-grade Client Portal** that mirrors production authentication flows,
+microservices architecture, slick React UI, and automated testing suites.
+Built by a full-stack dev who's loves to create applications that can help society. JKJK still learning!!!
 
 > *Think of it as the software equivalent of a well-aged steak: robust, flavorful, and ready to impress at any dev dinner party.*
 
----
+
 
 ## 🎯 Quick Start (4-Terminal Orchestration)
 
 **Prerequisites:** Docker Desktop running. Wake it up if it's napping.
-
+```
 ### Terminal 1: PostgreSQL Database
 ```bash
 cd database
@@ -43,9 +49,9 @@ npm start
 **🌐 Access:** http://localhost:3000  
 **🧪 Test Credentials:** `chris@portal.dev` / `Chris@123!`
 
-[Architecture Flow]
+# Architecture Flow
 
----
+
 
 ## 🖥️ Frontend (React 18)
 
@@ -65,8 +71,6 @@ npm start
 
 ## 🛡️ Middleware (Express BFF - Port 3001)
 
-[Express Middleware]
-
 **The unsung hero** between React and FastAPI. **Why BFF?**
 - 🔐 JWT verification before backend hits
 - 🛑 Rate limiting (auth: 10/15min)
@@ -79,8 +83,6 @@ npm start
 ---
 
 ## ⚙️ Backend (FastAPI - Port 8000)
-
-[FastAPI Backend]
 
 **Tech Stack:** FastAPI + SQLAlchemy 2.0 + Pydantic v2 + Alembic + pytest
 
@@ -98,8 +100,6 @@ Routes (HTTP) → Services (Business Logic) → Models (Database)
 ---
 
 ## 🗄️ Database (PostgreSQL 15)
-
-[PostgreSQL Schema]
 
 **🧠 Production Design Decisions:**
 - 🔑 UUIDv4 PKs (no enumeration attacks)
@@ -135,4 +135,3 @@ This isn't toy code. Every design decision has a "why" that survives senior engi
 
 ---
 *Built by a dev who actually reads the error logs and values QA*
-```
