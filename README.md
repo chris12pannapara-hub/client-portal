@@ -20,7 +20,7 @@ Built by a full-stack dev who's loves to create applications that can help socie
 ## 🎯 Quick Start (4-Terminal Orchestration)
 
 **Prerequisites:** Docker Desktop running. Wake it up if it's napping.
-```
+
 ### Terminal 1: PostgreSQL Database
 ```bash
 cd database
