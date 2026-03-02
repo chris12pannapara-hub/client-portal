@@ -3,7 +3,7 @@
 
 # Enterprise Client Portal Architecture
 
-# Production Ready which you can very well use for your bussiness big or small
+# Production Ready which you can very well use for your business big or small
 
 **Fork it. Star it. Change it. Show it off .**
 
